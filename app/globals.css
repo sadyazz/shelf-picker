@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-gray-950 text-gray-100 min-h-screen antialiased;
+}
+
+.container {
+  @apply mx-auto max-w-2xl px-4;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 200ms ease-out both;
+}
+
+/* book loader */
+.book-loader {
+  @apply flex items-center justify-center min-h-[50vh];
+}
+.book {
+  position: relative;
+  width: 56px;
+  height: 40px;
+  perspective: 400px;
+}
+.book .page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.45),
+    rgba(216, 180, 254, 0.25)
+  );
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transform-origin: left center;
+}
+.book .p1 {
+  animation: flip 1.2s ease-in-out infinite;
+}
+.book .p2 {
+  animation: flip 1.2s ease-in-out infinite 0.15s;
+}
+.book .p3 {
+  animation: flip 1.2s ease-in-out infinite 0.3s;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateY(0deg) translateZ(0);
+    opacity: 0.9;
+  }
+  40% {
+    transform: rotateY(-160deg) translateZ(2px);
+    opacity: 1;
+  }
+  60% {
+    transform: rotateY(-160deg) translateZ(2px);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateY(-320deg) translateZ(0);
+    opacity: 0.9;
+  }
+}
+
+/* spread loader */
+.book-spread {
+  position: relative;
+  width: 180px;
+  height: 64px;
+}
+.book-spread .spine {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 12px;
+  border-radius: 16px 16px 0 0;
+  background: rgba(168, 85, 247, 0.9);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+.book-spread .ray {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  width: 135px;
+  height: 8px;
+  transform-origin: left bottom;
+  background: rgba(216, 180, 254, 0.9);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.35);
+  animation: flipRay 1.2s ease-in-out infinite;
+}
+.book-spread .r1 {
+  --rot: -28deg;
+  animation-delay: 0s;
+  transform: translateX(0) rotate(var(--rot));
+}
+.book-spread .r2 {
+  --rot: -14deg;
+  animation-delay: 0.08s;
+  transform: translateX(0) rotate(var(--rot));
+}
+.book-spread .r3 {
+  --rot: 0deg;
+  animation-delay: 0.16s;
+  transform: translateX(0) rotate(var(--rot));
+  height: 10px;
+}
+.book-spread .r4 {
+  --rot: 14deg;
+  animation-delay: 0.24s;
+  transform: translateX(0) rotate(var(--rot));
+}
+.book-spread .r5 {
+  --rot: 28deg;
+  animation-delay: 0.32s;
+  transform: translateX(0) rotate(var(--rot));
+}
+
+/* SVG spread rays animation */
+.book-spread-svg .ray {
+  animation: svgFlip 1.2s ease-in-out infinite;
+}
+.book-spread-svg .r2 {
+  animation-delay: 0.08s;
+}
+.book-spread-svg .r3 {
+  animation-delay: 0.16s;
+}
+.book-spread-svg .r4 {
+  animation-delay: 0.24s;
+}
+.book-spread-svg .r5 {
+  animation-delay: 0.32s;
+}
+
+@keyframes svgFlip {
+  0% {
+    transform: rotate(-8deg);
+    opacity: 0.85;
+  }
+  50% {
+    transform: rotate(8deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-8deg);
+    opacity: 0.85;
+  }
+}
+
+/* experimental 3D leafs (CSS) */
+.book-3d {
+  position: relative;
+  width: 220px;
+  height: 120px;
+  perspective: 600px;
+}
+.book-3d .spine {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  width: 140px;
+  height: 14px;
+  background: rgba(168, 85, 247, 0.9);
+  border-radius: 16px 16px 0 0;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+}
+.book-3d .leaf {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  width: 10px;
+  height: 100px;
+  transform-origin: left bottom;
+  background: rgba(216, 180, 254, 0.9);
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.35);
+  animation: leafFlip 1.2s ease-in-out infinite;
+}
+.book-3d .l1 {
+  --rz: -110deg;
+  animation-delay: 0s;
+}
+.book-3d .l2 {
+  --rz: -100deg;
+  animation-delay: 0.08s;
+}
+.book-3d .l3 {
+  --rz: -90deg;
+  animation-delay: 0.16s;
+  height: 110px;
+}
+.book-3d .l4 {
+  --rz: -80deg;
+  animation-delay: 0.24s;
+}
+.book-3d .l5 {
+  --rz: -70deg;
+  animation-delay: 0.32s;
+}
+
+@keyframes leafFlip {
+  0% {
+    transform: rotateZ(var(--rz)) rotateY(-150deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: rotateZ(var(--rz)) rotateY(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateZ(var(--rz)) rotateY(150deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes flipRay {
+  0% {
+    transform: translateX(0) rotate(calc(var(--rot, 0deg) - 10deg));
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateX(0) rotate(calc(var(--rot, 0deg) + 10deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) rotate(calc(var(--rot, 0deg) - 10deg));
+    opacity: 0.85;
+  }
+}
