@@ -23,6 +23,11 @@ export default function RootLayout({
           }
           src="https://plausible.io/js/script.js"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1618373425073041"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <div className="min-h-screen flex flex-col px-8 bg-gray-950">
