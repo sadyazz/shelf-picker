@@ -35,7 +35,7 @@ export default function UserIdForm({ onSubmit, loading = false }: Props) {
         <button
           type="submit"
           disabled={!userId || loading}
-          className="rounded-full bg-violet-700/70 px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-violet-500/80 disabled:opacity-50"
+          className="rounded-full bg-[#d13966] px-4 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[#b02c52] disabled:opacity-50"
         >
           {loading ? 'Loading…' : 'Submit'}
         </button>

@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import AdvancedOptions from '@/components/AdvancedOptions'
 import ResultCard from '@/components/ResultCard'
-import BookLoader from '@/components/testBookLoader'
 import UserIdForm from '@/components/UserIdForm'
 
 type PickResponse = {
@@ -56,43 +55,45 @@ export default function Page() {
   }
 
   return (
-    <main className="flex flex-1 flex-col space-y-4">
-      <UserIdForm
-        loading={loading}
-        onSubmit={(uid) => {
-          setUserId(uid)
-          return submit(uid)
-        }}
-      />
-      {/* <div className="mt-3">
-        <AdvancedOptions />
-      </div> */}
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1 flex flex-col space-y-4">
+        <UserIdForm
+          loading={loading}
+          onSubmit={(uid) => {
+            setUserId(uid)
+            return submit(uid)
+          }}
+        />
+        {/* <div className="mt-3">
+          <AdvancedOptions />
+        </div> */}
 
-      {error && (
-        <div className="rounded border border-red-800 bg-red-950 p-2 text-red-200">
-          {error}
-        </div>
-      )}
+        {error && (
+          <div className="rounded border border-red-800 bg-red-950 p-2 text-red-200">
+            {error}
+          </div>
+        )}
 
-      {loading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <BookLoader size="large" />
-        </div>
-      )}
+        {loading && (
+          <div className="flex items-center justify-center pt-32">
+            <div className="simple-spinner"></div>
+          </div>
+        )}
 
-      {!loading && data?.ok && data.result && (
-        <div className="space-y-1.5 mt-14">
-          <ResultCard result={data.result} />
-          {/* <div className="flex items-center justify-end text-sm text-gray-400">
-            <button
-              onClick={() => submit()}
-              className="rounded-full border border-violet-500/30 px-3 py-1 text-violet-200 hover:bg-violet-500/10"
-            >
-              Reroll
-            </button>
-          </div> */}
-        </div>
-      )}
-    </main>
+        {!loading && data?.ok && data.result && (
+          <div className="space-y-1.5 mt-14">
+            <ResultCard result={data.result} />
+            {/* <div className="flex items-center justify-end text-sm text-gray-400">
+              <button
+                onClick={() => submit()}
+                className="rounded-full border border-violet-500/30 px-3 py-1 text-violet-200 hover:bg-violet-500/10"
+              >
+                Reroll
+              </button>
+            </div> */}
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
