@@ -3,6 +3,34 @@ import { useState } from 'react'
 import AdvancedOptions from '@/components/AdvancedOptions'
 import ResultCard from '@/components/ResultCard'
 import UserIdForm from '@/components/UserIdForm'
+import CsvImportForm from '@/components/CsvImportForm'
+
+type Book = {
+  'Book Id': string
+  Title: string
+  Author: string
+  'Author l-f': string
+  'Additional Authors': string
+  ISBN: string
+  ISBN13: string
+  'My Rating': string
+  'Average Rating': string
+  Publisher: string
+  Binding: string
+  'Number of Pages': string
+  'Year Published': string
+  'Original Publication Year': string
+  'Date Read': string
+  'Date Added': string
+  Bookshelves: string
+  'Bookshelves with positions': string
+  'Exclusive Shelf': string
+  'My Review': string
+  Spoiler: string
+  'Private Notes': string
+  'Read Count': string
+  'Owned Copies': string
+}
 
 type PickResponse = {
   ok: boolean
@@ -18,6 +46,7 @@ type PickResponse = {
 }
 
 export default function Page() {
+  const [activeTab, setActiveTab] = useState('userId')
   const [userId, setUserId] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -57,13 +86,44 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 flex flex-col space-y-4">
-        <UserIdForm
-          loading={loading}
-          onSubmit={(uid) => {
-            setUserId(uid)
-            return submit(uid)
-          }}
-        />
+        <div className="flex justify-center mb-4">
+          <button
+            className={`px-4 py-2 text-sm font-medium ${activeTab === 'userId' ? 'border-b-2 border-[#d13966] text-[#d13966]' : 'text-gray-400'}`}
+            onClick={() => setActiveTab('userId')}
+          >
+            Enter User ID
+          </button>
+          <button
+            className={`ml-4 px-4 py-2 text-sm font-medium ${activeTab === 'csvImport' ? 'border-b-2 border-[#d13966] text-[#d13966]' : 'text-gray-400'}`}
+            onClick={() => setActiveTab('csvImport')}
+          >
+            Import CSV
+          </button>
+        </div>
+
+        {activeTab === 'userId' && (
+          <UserIdForm
+            loading={loading}
+            onSubmit={(uid) => {
+              setUserId(uid)
+              return submit(uid)
+            }}
+          />
+        )}
+
+        {activeTab === 'csvImport' && (
+          <CsvImportForm
+            loading={loading}
+            onSubmit={(data) => {
+              if (data.error) {
+                setError(data.error)
+                return
+              }
+              setData(data)
+            }}
+          />
+        )}
+
         {/* <div className="mt-3">
           <AdvancedOptions />
         </div> */}

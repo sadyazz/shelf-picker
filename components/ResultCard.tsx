@@ -37,7 +37,7 @@ export default function ResultCard({ result }: Props) {
       />
       <div className="min-w-0 max-w-full">
         <a
-          href={`https://www.goodreads.com${result.url}`}
+          href={result.url.startsWith('http') ? result.url : `https://www.goodreads.com${result.url}`}
           target="_blank"
           rel="noreferrer"
           className="line-clamp-2 break-words text-2xl sm:text-3xl lg:text-2xl font-semibold tracking-tight text-violet-200/90 hover:text-violet-100 leading-tight hover:underline"
