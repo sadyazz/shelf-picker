@@ -122,9 +122,9 @@ export default function CsvImportForm({ onSubmit, loading = false }: Props) {
             To export your data from Goodreads:
             <ol className="list-decimal list-inside mt-1 space-y-1">
               <li>Go to Goodreads website</li>
-              <li>Click on "My Books"</li>
-              <li>Click on "Import and export"</li>
-              <li>Click "Export library" button</li>
+              <li>Click on &quot;My Books&quot;</li>
+              <li>Click on &quot;Import and export&quot;</li>
+              <li>Click &quot;Export library&quot; button</li>
               <li>Download the CSV file</li>
             </ol>
           </div>
