@@ -5,7 +5,21 @@ import SiteFooter from '@/components/SiteFooter'
 
 export const metadata: Metadata = {
   title: 'shelf picker',
-  description: 'Pick a random book from your Goodreads to-read shelf.'
+  description: 'Randomly pick your next book to read from your Goodreads to-read shelf. Simple, free tool to help you decide what book to read next from your Goodreads library.',
+  keywords: ['random book picker', 'goodreads random book', 'what to read next', 'goodreads to-read shelf', 'random book selector', 'book decision helper'],
+  openGraph: {
+    title: 'Shelf Picker - Random Book from Goodreads To-Read Shelf',
+    description: 'Randomly pick your next book to read from your Goodreads to-read shelf. Simple, free tool to help you decide what book to read next.',
+    type: 'website',
+    locale: 'en_US',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: 'https://shelf-picker.vercel.app'
+  }
 }
 
 export default function RootLayout({
