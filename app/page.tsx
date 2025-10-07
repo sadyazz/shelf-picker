@@ -87,12 +87,12 @@ export default function Page() {
     <div className="min-h-screen flex flex-col">
       <div className="flex-1 flex flex-col space-y-4">
         <div className="flex justify-center mb-4">
-          <button
+          {/* <button
             className={`px-4 py-2 text-sm font-medium ${activeTab === 'userId' ? 'border-b-2 border-[#d13966] text-[#d13966]' : 'text-gray-400'}`}
             onClick={() => setActiveTab('userId')}
           >
             Enter User ID
-          </button>
+          </button> */}
           <button
             className={`ml-4 px-4 py-2 text-sm font-medium ${activeTab === 'csvImport' ? 'border-b-2 border-[#d13966] text-[#d13966]' : 'text-gray-400'}`}
             onClick={() => setActiveTab('csvImport')}
@@ -101,7 +101,7 @@ export default function Page() {
           </button>
         </div>
 
-        {activeTab === 'userId' && (
+        {/*activeTab === 'userId' && (
           <UserIdForm
             loading={loading}
             onSubmit={(uid) => {
@@ -109,7 +109,7 @@ export default function Page() {
               return submit(uid)
             }}
           />
-        )}
+        )*/}
 
         {activeTab === 'csvImport' && (
           <CsvImportForm
