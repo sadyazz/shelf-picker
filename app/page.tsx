@@ -46,7 +46,7 @@ type PickResponse = {
 }
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState('userId')
+  const [activeTab, setActiveTab] = useState('csvImport')
   const [userId, setUserId] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
