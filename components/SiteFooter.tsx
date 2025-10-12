@@ -3,7 +3,7 @@ import SupportButton from './SupportButton'
 export default function SiteFooter() {
   return (
     <footer className="py-3 flex items-center justify-between text-sm text-gray-400">
-      <SupportButton />
+      {/* <SupportButton /> */}
       {/* <a
         className="rounded border border-gray-700 px-3 py-1 hover:bg-gray-800"
         href={process.env.NEXT_PUBLIC_KOFI_LINK || '#'}
